@@ -1,0 +1,57 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Coverage
+coverage/
+*.lcov
+
+# Build artifacts (if using tools like deno bundle or compiling)
+dist/
+build/
+
+# Deno cache (optional – usually not committed)
+deno.lock
+.deno/
+
+# Optional test output
+test_output/
+*.test.ts.snapshot
+
+# Optional REPL history
+.deno_history
+
+# Editor directories and files
+.vscode/
+*.code-workspace
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Swap and temporary files
+*.swp
+*.tmp
+
+# Flamegraphs / profiling tools
+profile*
+*clinic*
+*flamegraph*
+
+# If using vendored dependencies (via `deno vendor`)
+vendor/
+
+# If using external tools to generate JS output
+*.js
+*.js.map
+
+# Environment variables
+.env
+.env.*
