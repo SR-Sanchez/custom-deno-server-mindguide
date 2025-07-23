@@ -120,12 +120,41 @@ export const createContext = (req: Request, params: Record<string, string>, url:
 }
 
 // ---- Responses ----
-export const badRequest = (customError: string = "") => new Response(`Bad Request ${customError}`, { status: 400 });
-export const tooLong = () => new Response("Request Too Large", { status: 413 });
-export const notFound = () => new Response("Not Found", { status: 404 });
-export const methodNotAllowed = () => new Response("Method Not Allowed", { status: 405 });
-export const requestTimeOut = () => new Response("Request Timeout", { status: 408 });
-export const internalServerError = (error: string = "Internal Server Error") => new Response(error, { status: 500 });
+export const badRequest = (error: string = "") => returnError(`Bad Request: ${error}`);
+export const tooLong = () => returnError("Request Too Large", 413);
+export const notFound = (error: string = "Not found") => returnError(error, 404)
+export const methodNotAllowed = () => returnError("Method Not Allowed", 405);
+export const requestTimeOut = () => returnError("Request Timeout",  408);
+export const internalServerError = (error: string = "Internal Server Error") => returnError(error, 500)
+
+
+export const testingResponse = () => {
+	const body = {
+		customResponse: "awesome!!"
+	}
+	return returnSuccess( body, 200)
+}
+
+
+export const returnSuccess = <T>(data: T, status: number = 200, headers: HeadersInit = { "Content-Type": "application/json",}) => {
+	return new Response(JSON.stringify({
+		success: true,
+		data: data,
+	}), {
+		status: status,
+		headers: headers
+	})
+}
+
+export const returnError = (error: string, status: number = 400, headers: HeadersInit = {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}) => {
+	return new Response(JSON.stringify({
+		success: false,
+		error: error,
+	}), {
+		status: status,
+		headers: headers
+	})
+}
 
 export const handleError = (error: Error | unknown) => {
 	if (error instanceof Error) {

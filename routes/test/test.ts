@@ -1,5 +1,7 @@
+import { testingResponse } from "../_utils.ts";
+
 export function GET() {
-  return { message: "Test" };
+  return testingResponse();
 }
 
 export function POST() {

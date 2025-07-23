@@ -1,5 +1,5 @@
 # Use the official Deno image (latest at the moment of creation)
-FROM denoland/deno:alpine-2.3.6
+FROM denoland/deno:2.3.6
 
 # Set working directory
 WORKDIR /app
@@ -15,4 +15,4 @@ EXPOSE 9000
 
 # Command to run the Deno app
 # CMD ["run", "--allow-net", "main.ts"]
-CMD ["deno", "run", "prod"]
+CMD ["deno", "run", "dev"]
